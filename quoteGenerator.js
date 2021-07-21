@@ -42,15 +42,16 @@ const quotes = [
   }
   
   const quote = getQuote(quotes);
-  
-  console.log(quote.quote, quote.source);
-  
-  let html = "";
-  
+
   //function that displays quote to screen
-  function displayQuote(){
-    html = `<h2>${quote.quote}</h2>`;
+ function displayQuote(){
+        const html = 
+        `<h2>${quote.quote}</h2>
+        <h3>${quote.source}</h3>
+        `; 
+    return html;
   }
   
+  const html = displayQuote();
   const main = document.querySelector("main");
   main.insertAdjacentHTML("beforeend", html);
