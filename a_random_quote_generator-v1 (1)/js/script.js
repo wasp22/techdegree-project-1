@@ -15,12 +15,13 @@ const quotes = [
   {
     quote: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
     source: "Albert Einstein",
-    citation: "GoodReads"
+    citation: "GoodReads",
+    tags: "humor"
   },
   {
     quote: "A room without books is like a body without a soul.",
     source: "Marcus Tullius Cicero",
-    citation: "GoodReads"
+    citation: "Goodreads"
   },
   {
     quote: "There's not a word yet, for old friends who've just met.",
@@ -36,17 +37,19 @@ const quotes = [
   {
     quote: "Be careful about reading health books. Some fine day you'll die of a misprint.",
     source: "Markus Herz",
-    citation: "GoodReads",
+    citation: "Goodreads",
+    tags: "humor"
   },
   {
     quote: "Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers.",
     source: "Charles W. Eliot",
-    citation: "GoodReads"
+    citation: "Goodreads"
   },
   {
     quote: "The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom.",
     source: "Isaac Asimov",
-    citation: "GoodReads"
+    citation: "GoodReads",
+    tags: "philosophy"
   }
 ];
 
@@ -54,6 +57,7 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 
+//function that accesses an object from quotes array at random
 function getRandomQuote(arr){
   const randomNumber = Math.floor(Math.random() * arr.length);
   return arr[randomNumber];
@@ -63,7 +67,7 @@ function getRandomQuote(arr){
  * `printQuote` function
 ***/
 
-
+//function that displays random quote
 function printQuote(){
   let quote = getRandomQuote(quotes);
   let html = `<p class="quote"> ${quote.quote} </p>
@@ -74,11 +78,30 @@ function printQuote(){
   if (quote.year){
     html += `<span class="year"> ${quote.year} </span>`
   }
+  if (quote.tags) {
+    html += `<span class="year"> ${quote.tags} </span>`
+  }
   html += "</p>";
-  document.getElementById('quote-box').innerHTML = html; 
+  
+  document.getElementById('quote-box').innerHTML = html;
+  //sets color returned from function call to background color property 
+  let randColor = randomBackgroundColor();
+  document.body.style.backgroundColor = randColor;
+
   return html;        
 }
 printQuote();
+
+const autoRefresh = setInterval(printQuote, 5000);
+
+//function that return a random rgb color 
+function randomBackgroundColor() {
+  const rand_1 = Math.floor(Math.random() * 256);
+  const rand_2 = Math.floor(Math.random() * 256);
+  const rand_3 = Math.floor(Math.random() * 256);
+  return rbgColor = `rgb(${rand_1}, ${rand_2}, ${rand_3})`;
+}
+
 
 
 /***
