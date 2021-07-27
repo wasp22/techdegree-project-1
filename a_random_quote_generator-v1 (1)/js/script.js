@@ -53,21 +53,13 @@ const quotes = [
   }
 ];
 
-/***
- * `getRandomQuote` function
-***/
-
-//function that accesses an object from quotes array at random
+//access a random quote from array passed to function
 function getRandomQuote(arr){
   const randomNumber = Math.floor(Math.random() * arr.length);
   return arr[randomNumber];
 }
 
-/***
- * `printQuote` function
-***/
-
-//function that displays random quote
+//displays random quote to page 
 function printQuote(){
   let quote = getRandomQuote(quotes);
   let html = `<p class="quote"> ${quote.quote} </p>
@@ -84,7 +76,8 @@ function printQuote(){
   html += "</p>";
   
   document.getElementById('quote-box').innerHTML = html;
-  //sets color returned from function call to background color property 
+
+  //sets a random background color
   let randColor = randomBackgroundColor();
   document.body.style.backgroundColor = randColor;
 
